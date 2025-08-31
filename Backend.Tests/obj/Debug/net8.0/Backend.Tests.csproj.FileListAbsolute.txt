@@ -358,3 +358,4 @@
 /Users/ahmadsawaed/devops_final_project/MyApp/Backend.Tests/obj/Debug/net8.0/Backend.Tests.pdb
 /Users/ahmadsawaed/devops_final_project/MyApp/Backend.Tests/obj/Debug/net8.0/Backend.Tests.genruntimeconfig.cache
 /Users/ahmadsawaed/devops_final_project/MyApp/Backend.Tests/obj/Debug/net8.0/ref/Backend.Tests.dll
+/Users/ahmadsawaed/devops_final_project/MyApp/Backend.Tests/obj/Debug/net8.0/Backend.Tests.sourcelink.json
