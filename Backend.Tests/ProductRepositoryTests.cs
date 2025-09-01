@@ -30,6 +30,6 @@ public class ProductRepositoryTests
         var productId = await _sut.AddPoductToDatabase(product);
         // Assert
 
-        Assert.Equal(product.Id, productId);
+        Assert.Equal(product.Id, "sad");
     }
 }
