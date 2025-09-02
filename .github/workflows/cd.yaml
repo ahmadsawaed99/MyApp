@@ -1,0 +1,39 @@
+# This workflow will deploy to production
+
+name: Deploy to Amazon EKS
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ vars.AWS_REGION }}
+
+    - name: Login to Docker Hub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+    - name: Build and push Docker image
+      run: |
+        cd /Backend
+        IMAGE=${{ secrets.DOCKERHUB_USERNAME }}/backend
+        TAG=$(git rev-parse --short HEAD)
+        docker build -t $IMAGE:$TAG -t $IMAGE:latest .
+        docker push $IMAGE:$TAG
+        docker push $IMAGE:latest
