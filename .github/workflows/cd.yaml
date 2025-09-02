@@ -31,7 +31,7 @@ jobs:
 
     - name: Build and push Docker image
       run: |
-        cd /Backend
+        cd ./Backend
         IMAGE=${{ secrets.DOCKERHUB_USERNAME }}/backend
         TAG=$(git rev-parse --short HEAD)
         docker build -t $IMAGE:$TAG -t $IMAGE:latest .
