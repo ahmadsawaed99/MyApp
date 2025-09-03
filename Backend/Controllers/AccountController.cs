@@ -10,7 +10,7 @@ namespace Backend.Controllers
     [AllowAnonymous]
     public class AccountController(IAccountRepository accountRepository) : ControllerBase
     {
-        [HttpPost("register")]
+        [HttpPost("register/user")]
         [AllowAnonymous]
         public async Task<IActionResult> Register(UserDTO userDTO)
         {
