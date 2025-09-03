@@ -56,7 +56,7 @@ jobs:
       - name: Set image on Deployment
         run: |
           kubectl -n "${{ secrets.NAMESPACE }}" set image deployment/"${{ secrets.DEPLOYMENT }}" \
-            backend="$IMAGE_REPO:$IMAGE_TAG"
+            backend="${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.IMAGE_NAME }}:$IMAGE_TAG"
 
       - name: Wait for rollout
         run: kubectl -n "${{ secrets.NAMESPACE }}" rollout status deployment/"${{ secrets.DEPLOYMENT }}" --timeout=5m
