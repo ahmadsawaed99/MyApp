@@ -45,3 +45,7 @@ spec:
       protocol: TCP
       port: 80
       targetPort: 8080
+
+
+# kubectl create configmap docdb-ca \
+#   --from-file=global-bundle.pem=./global-bundle.pem

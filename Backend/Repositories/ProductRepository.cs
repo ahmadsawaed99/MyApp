@@ -7,6 +7,7 @@ namespace Backend.Repositories
     {
         Task<string> AddPoductToDatabase(Product product);
         List<Product> GetAll();
+        Task<Product> GetProductById(string id);
     }
     public class ProductRepository : IProductRepository
     {
@@ -21,6 +22,11 @@ namespace Backend.Repositories
             return await _mongoService.AddToDatabase(product,collectionName);
         }
 
+        public async Task<Product> GetProductById(string id)
+        {
+            return await _mongoService.GetItemById(collectionName,id);
+        }
+        
         public List<Product> GetAll()
         {
             return _mongoService.GetAll(collectionName);
