@@ -21,6 +21,13 @@ namespace Backend.Controllers
             var id = await _productRepository.AddPoductToDatabase(product);
             return Ok(id);
         }
+        [HttpGet("{id}")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetProductById(string id)
+        {
+            var product = await _productRepository.GetProductById(id);
+            return Ok(product);
+        }
         [HttpGet]
         [AllowAnonymous]
         public IActionResult Get()

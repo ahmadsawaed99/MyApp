@@ -17,6 +17,7 @@ namespace Backend.Services
     {
         Task<string> AddToDatabase(T t, string collectioName);
         List<T> GetAll(string collectioName);
+        Task<T> GetItemById(string collectioName, string id);
     }
     public class MongoDBService<T> : IMongoDBService<T>
     {
@@ -85,6 +86,17 @@ namespace Backend.Services
             {
                 throw new Exception(ex.Message);
             }
+        }
+        public async Task<T> GetItemById(string collectioName,string id)
+        {
+            var collection = DbConnection().GetCollection<T>(collectioName);
+            var filter = Builders<T>.Filter.Eq("id",id);
+
+
+            var item = collection.Find(filter).FirstOrDefaultAsync();
+
+            return await item;
+
         }
         public List<T> GetAll(string collectioName)
         {
