@@ -15,7 +15,7 @@ namespace Backend.Controllers
             _productRepository = productRepository;
         }
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize]
         public async Task<IActionResult> Post(Product product)
         {
             var id = await _productRepository.AddPoductToDatabase(product);
