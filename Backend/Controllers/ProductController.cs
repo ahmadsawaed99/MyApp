@@ -18,6 +18,7 @@ namespace Backend.Controllers
         [Authorize]
         public async Task<IActionResult> Post(Product product)
         {
+            product.Id = Guid.NewGuid().ToString("N");
             var id = await _productRepository.AddPoductToDatabase(product);
             return Ok(id);
         }
