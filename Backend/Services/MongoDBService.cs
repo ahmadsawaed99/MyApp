@@ -90,7 +90,7 @@ namespace Backend.Services
         public async Task<T> GetItemById(string collectioName,string id)
         {
             var collection = DbConnection().GetCollection<T>(collectioName);
-            var filter = Builders<T>.Filter.Eq("id",id);
+            var filter = Builders<T>.Filter.Eq("_id",id);
 
 
             var item = collection.Find(filter).FirstOrDefaultAsync();
