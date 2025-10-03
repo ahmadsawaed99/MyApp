@@ -63,8 +63,8 @@ namespace Backend.Repositories
         public async Task<ServiceResponses.LoginResponse> CreateAccount(UserDTO userDTO)
         {
             // CreateUserPassword
-            if (userDTO.CreateUserPassword != _config["CreateUserPassword"] && userDTO.CreateUserPassword != _config["CreateAdminPassword"])
-                return new ServiceResponses.LoginResponse(false, null!, null!, "The password of create user is wrong", null!);
+            // if (userDTO.CreateUserPassword != _config["CreateUserPassword"] && userDTO.CreateUserPassword != _config["CreateAdminPassword"])
+            //     return new ServiceResponses.LoginResponse(false, null!, null!, "The password of create user is wrong", null!);
 
             if (userDTO == null)
                 return new ServiceResponses.LoginResponse(false, null!, null!, "Model is empty", null!);
